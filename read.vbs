@@ -57,7 +57,7 @@ Sub Readaloud(text) 'Windows組み込み機能を利用した読み上げサブプロシージャ。日本
     IsAscii = Regx.Test(text) '正規表現でASCIIのみの文字列かどうかを判別
 
     With CreateObject("SAPI.SpVoice")
-		.Rate = 1 'Values for the Rate property range from -10 to 10
+		.Rate = 0 'Values for the Rate property range from -10 to 10
         If IsAscii Then
             Set .Voice = .GetVoices.Item(1) '英語読みモードに切り替え
         Else
