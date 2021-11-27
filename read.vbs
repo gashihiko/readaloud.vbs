@@ -50,7 +50,7 @@ next
 Sub Readaloud(text) 'Windows組み込み機能を利用した読み上げサブプロシージャ。日本語読み・英語読み両対応。
     Set Regx = CreateObject("VBScript.RegExp")
     With Regx
-        .Pattern = "^[0-9a-zA-Z\- .,]+$"
+		.Pattern = "^[a-zA-Z0-9!-/:-@\[-`{-~\s]+$"
         .IgnoreCase = True
         .Global = True
     End With
