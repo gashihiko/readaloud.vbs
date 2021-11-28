@@ -12,7 +12,7 @@ Sub ReadTerminate
 	'起動された順にプロセスが選ばれる仕様らしい。なので自分自身は最後に終了される。
 	For Each p in GetObject("winmgmts:{impersonationLevel=impersonate}"). _
 		ExecQuery("select * from Win32_Process where Name='wscript.exe'")
-		If InStr(p.CommandLine, "read.vbs") Then
+		If InStr(p.CommandLine, "readaloud.vbs") Then
 			p.Terminate
 		End If
 	Next
@@ -22,7 +22,7 @@ If cnt = 1 Then '自分を終了させるためのプロセスを起動
 	Set WshShell = WScript.CreateObject("WScript.Shell")
 	Call WshShell.Run("wscript " & """" & WScript.ScriptFullName & """", 0, False)
 Else '自分を起動したものを終了させるためのプロセスと化す。
-	ans = Msgbox ("終了!?", vbOKOnly, "read.vbs")
+	ans = Msgbox ("終了!?", vbOKOnly, "readaloud.vbs")
 	If ans = vbOK Then
 		Call ReadTerminate
 	End If
